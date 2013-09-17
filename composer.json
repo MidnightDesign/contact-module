@@ -1,0 +1,13 @@
+{
+    "name": "midnight/contact-module",
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zend-mail": "~2.2",
+    },
+    "autoload": {
+        "psr-0": {
+            "Midnight\\Contact": "src"
+        }
+    }
+}
