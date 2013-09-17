@@ -49,4 +49,16 @@ return array(
             },
         ),
     ),
+    'settings' => [
+        __NAMESPACE__ => [
+            'recipient' => [
+                'form_element' => [
+                    'type' => 'email',
+                    'options' => [
+                        'label' => 'Empfänger für Kontaktanfragen',
+                    ],
+                ],
+            ],
+        ],
+    ],
 );

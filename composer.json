@@ -3,7 +3,8 @@
     "minimum-stability": "stable",
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zend-mail": "~2.2"
+        "zendframework/zend-mail": "~2.2",
+        "midnight/settings-module": "dev-master"
     },
     "autoload": {
         "psr-0": {
