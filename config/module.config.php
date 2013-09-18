@@ -72,6 +72,11 @@ return array(
             },
         ),
     ),
+    'mail' => array(
+        'transport' => array(
+            'type' => 'sendmail',
+        ),
+    ),
     'settings' => [
         __NAMESPACE__ => [
             'recipient' => [
