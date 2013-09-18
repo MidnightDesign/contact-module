@@ -2,7 +2,14 @@
 /** @var \Zend\View\Renderer\PhpRenderer $this */
 /** @var \Midnight\Contact\Form\ContactForm $form */
 $form = $this->form;
-$form->setAttribute('class', $form->getAttribute('class') . ' contact-form');
+$identity = $this->identity();
+$can_edit = ($identity && $identity->getIsAdmin());
 ?>
-    <h1><?= $this->translate('Kontakt') ?></h1>
-<?= $this->form($form) ?>
+<h1><?= $this->translate('Kontakt') ?></h1>
+<div class="contact-info">
+    <?= $this->wysiwyg($this->text, $this->url('zfcadmin/contact/set-text'), array('condition' => $can_edit)) ?>
+</div>
+<div class="contact-form">
+    <h2>Kontaktformular</h2>
+    <?= $this->form($form) ?>
+</div>

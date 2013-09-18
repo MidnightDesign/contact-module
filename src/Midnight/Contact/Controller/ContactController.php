@@ -5,7 +5,6 @@ namespace Midnight\Contact\Controller;
 use Doctrine\ORM\EntityManager;
 use Midnight\Contact\Form\ContactForm;
 use Midnight\Settings\Entity\Setting;
-use Midnight\Settings\Service\SettingService;
 use Zend\Mail\Message;
 use Zend\Mail\Transport\TransportInterface;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -15,6 +14,13 @@ class ContactController extends AbstractActionController
 {
     public function indexAction()
     {
+//        var_dump(
+//            $this
+//                ->getServiceLocator()
+//                ->get('doctrine.entitymanager.orm_default')
+//                ->getRepository('Midnight\Settings\Entity\Setting')
+//                ->findOneBy(array('namespace' => 'Midnight\Contact', 'key' => 'text'))
+//        );
         $form = new ContactForm();
 
         $request = $this->getRequest();
@@ -76,6 +82,6 @@ class ContactController extends AbstractActionController
      */
     private function getSettingValue($key, $namespace = 'Midnight\Contact')
     {
-        return $this->settings($key, $namespace);
+        return $this->settings($namespace, $key);
     }
 }

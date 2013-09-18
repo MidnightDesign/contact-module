@@ -20,11 +20,34 @@ return array(
                     ),
                 ),
             ),
+            'zfcadmin' => array(
+                'child_routes' => array(
+                    'contact' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/kontakt[/]',
+                            'defaults' => array(
+                                'controller' => __NAMESPACE__ . '\Controller\ContactAdmin',
+                            ),
+                        ),
+                        'child_routes' => array(
+                            'set-text' => array(
+                                'type' => 'Segment',
+                                'options' => array(
+                                    'route' => '/set-text[/]',
+                                    'defaults' => array('action' => 'set-text'),
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
+            ),
         ),
     ),
     'controllers' => array(
         'invokables' => array(
             __NAMESPACE__ . '\Controller\Contact' => __NAMESPACE__ . '\Controller\ContactController',
+            __NAMESPACE__ . '\Controller\ContactAdmin' => __NAMESPACE__ . '\Controller\ContactAdminController',
         ),
     ),
     'view_manager' => array(

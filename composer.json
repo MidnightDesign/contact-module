@@ -4,7 +4,9 @@
     "require": {
         "php": ">=5.3.3",
         "zendframework/zend-mail": "~2.2",
-        "midnight/settings-module": "dev-master"
+        "midnight/settings-module": "dev-master",
+        "midnight/wysiwig-module": "dev-master",
+        "midnight/admin-module": "dev-master"
     },
     "autoload": {
         "psr-0": {
