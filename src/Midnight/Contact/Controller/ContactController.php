@@ -5,7 +5,7 @@ namespace Midnight\Contact\Controller;
 use Doctrine\ORM\EntityManager;
 use Midnight\Contact\Form\ContactForm;
 use Midnight\Settings\Entity\Setting;
-use Midnight\Settings\Repository\SettingRepository;
+use Midnight\Settings\Service\SettingService;
 use Zend\Mail\Message;
 use Zend\Mail\Transport\TransportInterface;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -36,8 +36,11 @@ class ContactController extends AbstractActionController
             }
         }
 
+        $text = $this->getSettingValue('text');
+
         return $this->getViewModel(
             array(
+                'text' => $text,
                 'form' => $form,
             )
         );
@@ -55,12 +58,24 @@ class ContactController extends AbstractActionController
      */
     private function getRecipient()
     {
-        /** @var EntityManager $em */
-        $em = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
-        /** @var SettingRepository $settings_repo */
-        $settings_repo = $em->getRepository('Midnight\Settings\Entity\Setting');
-        /** @var Setting $recipient */
-        $recipient = $settings_repo->get('Midnight\Contact', 'recipient');
-        return $recipient->getValue();
+        return $this->getSettingValue('recipient');
+    }
+
+    /**
+     * @return EntityManager
+     */
+    private function getEntityManager()
+    {
+        return $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
+    }
+
+    /**
+     * @param string $key
+     * @param string $namespace
+     * @return Setting
+     */
+    private function getSettingValue($key, $namespace = 'Midnight\Contact')
+    {
+        return $this->settings($key, $namespace);
     }
 }
