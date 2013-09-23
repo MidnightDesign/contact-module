@@ -4,12 +4,22 @@
 $form = $this->form;
 $identity = $this->identity();
 $can_edit = ($identity && $identity->getIsAdmin());
+$text = $this->wysiwyg(
+    $this->text,
+    $this->url('zfcadmin/contact/set-text', ['key' => 'text']),
+    array('condition' => $can_edit)
+);
+$form_intro = $this->wysiwyg(
+    $this->formIntro,
+    $this->url('zfcadmin/contact/set-text', ['key' => 'form_intro']),
+    array('condition' => $can_edit)
+);
 ?>
 <h1><?= $this->translate('Kontakt') ?></h1>
 <div class="contact-info">
-    <?= $this->wysiwyg($this->text, $this->url('zfcadmin/contact/set-text'), array('condition' => $can_edit)) ?>
+    <?= $text ?>
 </div>
 <div class="contact-form">
-    <?= $this->wysiwyg($this->formIntro, $this->url('zfcadmin/contact/set-text'), array('condition' => $can_edit)) ?>
+    <?= $form_intro ?>
     <?= $this->form($form) ?>
 </div>

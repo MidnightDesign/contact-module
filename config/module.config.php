@@ -25,7 +25,7 @@ return array(
                     'contact' => array(
                         'type' => 'Segment',
                         'options' => array(
-                            'route' => '/kontakt[/]',
+                            'route' => '/kontakt',
                             'defaults' => array(
                                 'controller' => __NAMESPACE__ . '\Controller\ContactAdmin',
                             ),
@@ -34,7 +34,7 @@ return array(
                             'set-text' => array(
                                 'type' => 'Segment',
                                 'options' => array(
-                                    'route' => '/set-text[/]',
+                                    'route' => '/set-text/:key[/]',
                                     'defaults' => array('action' => 'set-text'),
                                 ),
                             ),

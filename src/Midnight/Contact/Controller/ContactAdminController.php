@@ -9,11 +9,12 @@ class ContactAdminController extends AbstractAdminController
 {
     public function setTextAction()
     {
+        $key = $this->params()->fromRoute('key');
         $text = $this->params()->fromPost('text');
         if (is_null($text)) {
             throw new \Exception('Didn\'t get a text.');
         }
-        $this->settings('Midnight\Contact', 'text', $text);
+        $this->settings('Midnight\Contact', $key, $text);
         return $this->getResponse();
     }
 
