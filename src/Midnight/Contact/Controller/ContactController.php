@@ -43,11 +43,13 @@ class ContactController extends AbstractActionController
         }
 
         $text = $this->getSettingValue('text');
+        $form_intro = $this->getSettingValue('form_intro');
 
         return $this->getViewModel(
             array(
                 'text' => $text,
                 'form' => $form,
+                'formIntro' => $form_intro,
             )
         );
     }

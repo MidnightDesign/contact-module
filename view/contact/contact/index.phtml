@@ -10,6 +10,6 @@ $can_edit = ($identity && $identity->getIsAdmin());
     <?= $this->wysiwyg($this->text, $this->url('zfcadmin/contact/set-text'), array('condition' => $can_edit)) ?>
 </div>
 <div class="contact-form">
-    <h2>Kontaktformular</h2>
+    <?= $this->wysiwyg($this->formIntro, $this->url('zfcadmin/contact/set-text'), array('condition' => $can_edit)) ?>
     <?= $this->form($form) ?>
 </div>
