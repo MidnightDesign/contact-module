@@ -19,7 +19,7 @@ class ContactForm extends Form
                 'name' => 'email',
                 'type' => 'email',
                 'options' => array(
-                    'label' => 'E-Mail',
+                    'label' => 'Ihre E-Mail-Adresse',
                 ),
             )
         );
